@@ -14,7 +14,16 @@ UUID1=$(python -c "import uuid; print(uuid.uuid4())")
 UUID2=$(python -c "import uuid; print(uuid.uuid4())")
 FUNC_NAME="gong_react"
 SOUND_ID="custom.gong"
-TEXT="§d☕ UzvarUA: Ти пробудив силу дзвону!"
+
+read -p "Написати своє повідомлення: " TEXT || {
+  echo "❌ Не вдалося прочитати повідомлення"
+  exit 1
+}
+
+[[ -z "$TEXT" ]] && {
+  echo "❌ Повідомлення не може бути порожнім"
+  exit 1
+}
 
 # Функція
 pack_uzvar(){
