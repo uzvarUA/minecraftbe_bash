@@ -3,6 +3,11 @@ set -euo pipefail
 # UzvarUA NPC Generator v1.0 🍵
 # Створює функцію, manifest.json і npc_dialogue.json для NPC з дзвоном і tellraw
 
+command -v python >/dev/null 2>&1 || {
+  echo "❌ Python не знайдено. Встанови його через: pkg install python"
+  exit 1
+}
+
 # === CONFIG ===
 PACK_NAME="UzvarUA_NPC_Pack"
 UUID1=$(python -c "import uuid; print(uuid.uuid4())")
@@ -10,6 +15,11 @@ UUID2=$(python -c "import uuid; print(uuid.uuid4())")
 FUNC_NAME="gong_react"
 SOUND_ID="custom.gong"
 TEXT="§d☕ UzvarUA: Ти пробудив силу дзвону!"
+
+[[ -z "$UUID1" || -z "$UUID2" ]] && {
+  echo "❌ Не вдалося згенерувати UUID"
+  exit 1
+}
 
 # === FILE TREE ===
 mkdir -p "$PACK_NAME/functions"
