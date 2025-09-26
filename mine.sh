@@ -16,6 +16,12 @@ FUNC_NAME="gong_react"
 SOUND_ID="custom.gong"
 TEXT="§d☕ UzvarUA: Ти пробудив силу дзвону!"
 
+# Функція
+pack_uzvar(){
+  robby="pack_icon.png"
+  echo "👽 Не забудьте добавити $robby"
+}
+
 [[ -z "$UUID1" || -z "$UUID2" ]] && {
   echo "❌ Не вдалося згенерувати UUID"
   exit 1
@@ -69,3 +75,4 @@ EOF
 echo -e "\n✅ UzvarUA NPC Pack створено!"
 echo "📁 $PACK_NAME готовий до копіювання в /games/com.mojang/behavior_packs/"
 echo "🔔 Не забудь додати gong.ogg у sounds/custom/"
+pack_uzvar
